@@ -30,6 +30,7 @@ const SHOP=[
 ];
 
 let P=null,B=null,view='hub',msg=[];
+function sp(t,size){const h=(window.SPR&&SPR.draw(t,state.gender))||'';return h?`<div style='width:${size}px;height:${size}px;margin:0 auto;animation:bob 1.7s ease-in-out infinite;filter:drop-shadow(0 0 10px #7c5cff)'>${h}</div>`:''}
 const rnd=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
 const pick=a=>a[Math.floor(Math.random()*a.length)];
 function save(){try{localStorage.setItem('rb_save',JSON.stringify(P))}catch(e){}}
@@ -118,10 +119,10 @@ reset(){if(confirm('Erase all progress?')){try{localStorage.removeItem('rb_save'
 function evoOpts(){return P.stage===0?FORMS[P.key].evo:[{name:'Ascended '+P.title,emoji:P.emoji,hpx:1.6,powx:1.6,skill:P.skill+' II'}]}
 
 function hubV(){
-return `<div class='scroll'><div class='hud'><div class='who'><span class='pe'>${P.emoji}</span> <b>${P.title}</b> &middot; Age ${P.age} &middot; Life ${P.lives}</div>${bar('hp',P.hp,P.maxhp,'HP')}${bar('en',P.en,P.maxen,'Energy')}${bar('xp',P.xp,P.lvl*20,'XP')}<div class='lbl'>Lv ${P.lvl} &middot; Power ${pAtk()} &middot; ${P.gold} gold &middot; ${WORLDS[P.world].n}</div></div><div class='log'>${msg.map(m=>'<p>'+m+'</p>').join('')||'<p>Your new life begins...</p>'}</div>${P.lvl>=10?`<div style='padding:0 8px 8px'>${b('menu','EVOLVE!','evo','alt')}</div>`:''}<div class='grid'>${b('train','Train (-15 EN)')}${b('hunt','Hunt (-20 EN)')}${b('dungeon','Dungeon (-35 EN)')}${b('rest','Rest (1 year)')}${b('year','Next Year')}${b('menu','Isekai Shop','shop')}${b('menu','Travel Worlds','travel')}${b('menu','Bonds','love')}${b('menu','Familiars','fam')}${b('reset','Reset game','','alt')}</div></div>`;
+return `<div class='scroll'><div class='hud'><div class='who'><span style='display:inline-block;width:46px;height:46px;vertical-align:middle'>${(window.SPR&&SPR.draw(P.title,state.gender))||P.emoji}</span> <b>${P.title}</b> &middot; Age ${P.age} &middot; Life ${P.lives}</div>${bar('hp',P.hp,P.maxhp,'HP')}${bar('en',P.en,P.maxen,'Energy')}${bar('xp',P.xp,P.lvl*20,'XP')}<div class='lbl'>Lv ${P.lvl} &middot; Power ${pAtk()} &middot; ${P.gold} gold &middot; ${WORLDS[P.world].n}</div></div><div class='log'>${msg.map(m=>'<p>'+m+'</p>').join('')||'<p>Your new life begins...</p>'}</div>${P.lvl>=10?`<div style='padding:0 8px 8px'>${b('menu','EVOLVE!','evo','alt')}</div>`:''}<div class='grid'>${b('train','Train (-15 EN)')}${b('hunt','Hunt (-20 EN)')}${b('dungeon','Dungeon (-35 EN)')}${b('rest','Rest (1 year)')}${b('year','Next Year')}${b('menu','Isekai Shop','shop')}${b('menu','Travel Worlds','travel')}${b('menu','Bonds','love')}${b('menu','Familiars','fam')}${b('reset','Reset game','','alt')}</div></div>`;
 }
 function battleV(){
-return `<div class='scroll'><div class='bf'><div class='foe'><div class='box'><b>${B.n}</b>${bar('hp',B.hp,B.maxhp,'HP')}</div><div class='spr'>${B.e}</div></div><div class='me'><div class='spr'>${P.emoji}</div><div class='box'><b>${P.title}</b> Lv${P.lvl}${bar('hp',P.hp,P.maxhp,'HP')}${bar('en',P.en,P.maxen,'EN')}</div></div></div><div class='log'>${B.log.map(m=>'<p>'+m+'</p>').join('')}</div><div class='grid'>${b('atk','Attack','strike')}${b('atk',P.skill+' (10 EN)','skill')}${b('atk','Guard','guard')}${b('atk','Run','run','alt')}</div></div>`;
+return `<div class='scroll'><div class='bf'><div class='foe'><div class='box'><b>${B.n}</b>${bar('hp',B.hp,B.maxhp,'HP')}</div>${sp(B.n,110)||`<div class='spr'>${B.e}</div>`}</div><div class='me'>${sp(P.title,128)||`<div class='spr'>${P.emoji}</div>`}<div class='box'><b>${P.title}</b> Lv${P.lvl}${bar('hp',P.hp,P.maxhp,'HP')}${bar('en',P.en,P.maxen,'EN')}</div></div></div><div class='log'>${B.log.map(m=>'<p>'+m+'</p>').join('')}</div><div class='grid'>${b('atk','Attack','strike')}${b('atk',P.skill+' (10 EN)','skill')}${b('atk','Guard','guard')}${b('atk','Run','run','alt')}</div></div>`;
 }
 function shopV(){
 return `<div class='scroll'><h3>Isekai Shop</h3><div class='sm' style='margin:0 8px'>You have ${P.gold} gold</div>${SHOP.map((it,i)=>`<div class='row2'><span>${it.n}<br><span class='sm'>${it.c} gold</span></span>${b('buy','Buy',i)}</div>`).join('')}<div class='log'>${msg.map(m=>'<p>'+m+'</p>').join('')}</div><div style='padding:8px'>${b('menu','Back','hub')}</div></div>`;
@@ -133,13 +134,13 @@ function loveV(){
 return `<div class='scroll'><h3>Bonds</h3>${Object.keys(CH).map(k=>`<div class='row2' style='display:block'><b>${CH[k].e} ${CH[k].n}</b>${bar('love',Math.min(10,P.love[k]),10,'Bond')}<div class='sm'>${P.boon[k]?'Unlocked: '+CH[k].boon:'Reach 10 for: '+CH[k].boon}</div><div style='margin-top:6px'>${b('talk','Talk (-5 EN)',k)}${b('gift','Gift (30g)',k)}</div></div>`).join('')}<div class='log'>${msg.map(m=>'<p>'+m+'</p>').join('')}</div><div style='padding:8px'>${b('menu','Back','hub')}</div></div>`;
 }
 function famV(){
-return `<div class='scroll'><h3>Familiars (${P.fam.length}/6)</h3>${P.fam.length?P.fam.map(f=>`<div class='row2'><span>${f.e} ${f.n}</span><span class='sm'>+${f.b} power</span></div>`).join(''):`<div class='row2'>No familiars yet. Defeat monsters and you may tame one!</div>`}<div style='padding:8px'>${b('menu','Back','hub')}</div></div>`;
+return `<div class='scroll'><h3>Familiars (${P.fam.length}/6)</h3>${P.fam.length?P.fam.map(f=>`<div class='row2'><span style='display:inline-flex;align-items:center;gap:8px'><span style='display:inline-block;width:40px;height:40px'>${(window.SPR&&SPR.draw(f.n,state.gender))||f.e}</span>${f.n}</span><span class='sm'>+${f.b} power</span></div>`).join(''):`<div class='row2'>No familiars yet. Defeat monsters and you may tame one!</div>`}<div style='padding:8px'>${b('menu','Back','hub')}</div></div>`;
 }
 function evoV(){
-return `<div class='scroll'><h3>Choose your evolution</h3><div class='sm' style='margin:0 8px'>Your level resets to 1, but you gain great power.</div>${evoOpts().map((o,i)=>`<div class='row2'><span style='font-size:30px'>${o.emoji}</span><span>${o.name}<br><span class='sm'>Skill: ${o.skill}</span></span>${b('evo','Evolve',i)}</div>`).join('')}<div style='padding:8px'>${b('menu','Not yet','hub')}</div></div>`;
+return `<div class='scroll'><h3>Choose your evolution</h3><div class='sm' style='margin:0 8px'>Your level resets to 1, but you gain great power.</div>${evoOpts().map((o,i)=>`<div class='row2'><span style='display:inline-block;width:56px;height:56px'>${(window.SPR&&SPR.draw(o.name,state.gender))||o.emoji}</span><span>${o.name}<br><span class='sm'>Skill: ${o.skill}</span></span>${b('evo','Evolve',i)}</div>`).join('')}<div style='padding:8px'>${b('menu','Not yet','hub')}</div></div>`;
 }
 function revealV(){
-return `<div class='center'><div class='spr' style='font-size:110px'>${P.emoji}</div><h1 style='color:var(--gold)'>Reborn as: ${P.title}</h1><p>HP ${P.maxhp} &middot; Power ${P.pow}${P.legacy?'<br>Legacy bonus: +'+P.legacy+' power from past lives':''}</p>${b('begin','Begin Life')}</div>`;
+return `<div class='center'>${sp(P.title,190)||`<div class='spr' style='font-size:110px'>${P.emoji}</div>`}<h1 style='color:var(--gold)'>Reborn as: ${P.title}</h1><p>HP ${P.maxhp} &middot; Power ${P.pow}${P.legacy?'<br>Legacy bonus: +'+P.legacy+' power from past lives':''}</p>${b('begin','Begin Life')}</div>`;
 }
 function deadV(){
 return `<div class='center'><div style='font-size:90px'>💀</div><h1 style='color:var(--red)'>You died</h1><p>${P.deathWhy} at age ${P.age}.<br>Your soul grows stronger: +2 power in every future life.</p>${b('reborn','Reincarnate')}</div>`;
