@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Reborn Beyond - World</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Reborn Beyond</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
 </head>
@@ -13,21 +15,51 @@
   <div id="bars">
     <div class="bar hp"><i id="hpFill"></i><span id="hpTxt"></span></div>
     <div class="bar nx"><i id="nxFill"></i><span id="nxTxt"></span></div>
+    <div class="bar en"><i id="enFill"></i><span id="enTxt"></span></div>
+    <div class="bar hg"><i id="hgFill"></i><span id="hgTxt"></span></div>
+    <div class="bar th"><i id="thFill"></i><span id="thTxt"></span></div>
+    <div class="bar ft"><i id="ftFill"></i><span id="ftTxt"></span></div>
   </div>
   <div id="where"></div>
+  <div id="obj"></div>
   <div id="toast"></div>
   <button id="btnBag" class="hb">Bag</button>
 </div>
+<div id="bossbar" class="hidden"><span id="bossName"></span><div class="bb"><i id="bossFill"></i></div></div>
 <div id="stick"><div id="knob"></div></div>
 <div id="acts">
   <button id="btnAtk" class="act big">Strike</button>
-  <button id="btnUse" class="act">Use</button>
+  <button id="btnSprint" class="act">Sprint</button>
+  <button id="btnDash" class="act">Dash</button>
   <button id="btnJump" class="act">Jump</button>
-  <div id="skills"></div>
+  <button id="btnUse" class="act">Use</button>
 </div>
+<div id="hotbar"></div>
+<div id="prompt" class="hidden"></div>
+<div id="hurt"></div>
 <div id="dialog" class="hidden"><div id="dName"></div><div id="dText"></div><div id="dHint">Tap to continue</div></div>
 <div id="panel" class="hidden"></div>
 <div id="msg" class="hidden"></div>
+<div id="title" class="hidden">
+  <div class="top"><div id="logo">Reborn<br>Beyond</div><div class="flourish"></div><div id="sub">An Isekai Adventure</div></div>
+  <div id="tap">TAP TO BEGIN</div>
+  <div id="menu" class="hidden">
+    <button class="mbtn" id="mNew">New Game</button>
+    <button class="mbtn" id="mCont">Continue</button>
+    <button class="mbtn" id="mSet">Settings</button>
+  </div>
+  <div id="setbox" class="hidden">
+    <h3>Settings</h3>
+    <label>Music <input id="sMusic" type="range" min="0" max="100"></label>
+    <label>Sound effects <input id="sSfx" type="range" min="0" max="100"></label>
+    <label>Graphics <button id="sQual" class="pbtn" style="display:inline-block;margin:0 0 0 8px"></button></label>
+    <button class="pbtn" id="sBack">Back</button>
+  </div>
+</div>
+<div id="boot"><div class="lgo">REBORN BEYOND</div><div class="lbar"><i id="bootBar"></i></div><div class="ltxt" id="bootTxt">Loading...</div></div>
+<div id="loading" class="hidden"><div class="lgo">ENTERING AETHRA</div><div class="lbar"><i id="loadBar"></i></div><div class="ltxt" id="loadTip"></div></div>
+<div id="chapter" class="hidden"></div>
+<div id="fade"></div>
 <script type="module" src="main.js"></script>
 </body>
 </html>

@@ -52,14 +52,14 @@ export function mkTree(kind){
   g.traverse(o=>{if(o.isMesh)o.castShadow=true});return g;
 }
 export function scatter(scene,nodes){
-  for(let i=0;i<650;i++){
+  for(let i=0;i<460;i++){
     const x=(Math.random()-0.5)*(SIZE-60),z=(Math.random()-0.5)*(SIZE-60);
     if(Math.hypot(x,z)<22)continue;const h=heightAt(x,z);if(h<SEA+0.8)continue;
     const b=biomeAt(x,z);const t=mkTree(BIOMES[b].tree);t.position.set(x,h,z);t.rotation.y=Math.random()*6;
     const s=0.8+Math.random()*0.7;t.scale.setScalar(s);scene.add(t);
-    nodes.push({kind:'tree',obj:t,x,z,r:1.6,hp:3,drop:{wood:[2,4]}});
+    nodes.push({kind:'tree',obj:t,x,z,r:1.6,hp:3,drop:{wood:[2,4],fiber:[0,2]}});
   }
-  for(let i=0;i<220;i++){
+  for(let i=0;i<150;i++){
     const x=(Math.random()-0.5)*(SIZE-60),z=(Math.random()-0.5)*(SIZE-60);
     if(Math.hypot(x,z)<20)continue;const h=heightAt(x,z);if(h<SEA+0.8)continue;
     const b=biomeAt(x,z);const ore=(b==='volcanic'||b==='snow')&&Math.random()<0.5;

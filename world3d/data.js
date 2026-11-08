@@ -20,12 +20,15 @@ export const ITEMS = {
   scalesword:{n:'Drakescale Edge',t:'wpn',v:260,atk:40}, moonblade:{n:'Moonlit Saber',t:'wpn',v:600,atk:60},
   leather:{n:'Hide Vest',t:'arm',v:20,def:4}, ironarmor:{n:'Ferrite Plate',t:'arm',v:90,def:10},
   scalearmor:{n:'Drakescale Mail',t:'arm',v:300,def:20}, mythicarmor:{n:'Aegis of Dawn',t:'arm',v:900,def:34},
-  horsegear:{n:'Steed Saddle',t:'misc',v:50}, torch:{n:'Torch',t:'misc',v:3}
+  horsegear:{n:'Steed Saddle',t:'misc',v:50}, torch:{n:'Torch',t:'misc',v:3},
+  wool:{n:'Soft Wool',t:'mat',v:5}, sisal:{n:'Sisal Fiber',t:'mat',v:2}, axe:{n:'Stone Axe',t:'tool',v:15},
+  backpack:{n:'Backpack',t:'misc',v:80}, mythpack:{n:'Mythic Backpack',t:'misc',v:5000}
 };
 export const RECIPES = [
-  {out:'plank',n:2,need:{wood:1}},
-  {out:'rope',n:1,need:{fiber:3}},
-  {out:'torch',n:2,need:{wood:1,ember:0}},
+  {out:'axe',n:1,need:{wood:2,stone:2}},
+  {out:'plank',n:2,need:{wood:1},tool:'axe'},
+  {out:'rope',n:1,need:{sisal:2}},
+  {out:'torch',n:2,need:{wood:1}},
   {out:'club',n:1,need:{plank:3,rope:1}},
   {out:'ingot',n:1,need:{ore:2,wood:1}},
   {out:'ironsword',n:1,need:{ingot:3,plank:1,rope:1}},
@@ -37,7 +40,8 @@ export const RECIPES = [
   {out:'emberblade',n:1,need:{ingot:4,ember:2,plank:1}},
   {out:'frostspear',n:1,need:{ingot:4,frost:2,plank:1}},
   {out:'scalesword',n:1,need:{ingot:6,scale:3,rope:2}},
-  {out:'scalearmor',n:1,need:{ingot:8,scale:5,hide:3}}
+  {out:'scalearmor',n:1,need:{ingot:8,scale:5,hide:3}},
+  {out:'backpack',n:1,need:{hide:6,rope:3,plank:2}}
 ];
 export const SHOP = ['potion','nexusTonic','meat','club','ironsword','leather','ironarmor','rope','plank','horsegear'];
 // Elemental ability trees. Nexus energy (NX) is the resource; each skill has its own cost.
@@ -68,6 +72,7 @@ export const MOBS = {
   scorpion:{n:'Dune Scorpion',hp:60,atk:9,xp:22,spd:3.6,col:0xc98a3a,drop:{hide:[1,2],sand:[1,2]},size:1.1,biome:['desert']},
   yeti:{n:'Frostveil Brute',hp:120,atk:14,xp:40,spd:3.0,col:0xdfeaff,drop:{frost:[1,2],hide:[2,3]},size:1.6,biome:['snow']},
   imp:{n:'Cinder Imp',hp:70,atk:12,xp:30,spd:4.4,col:0xe8502a,drop:{ember:[1,2],ore:[0,2]},size:0.9,biome:['volcanic']},
+  sheep:{n:'Meadow Sheep',hp:18,atk:0,xp:4,spd:2.6,col:0xf2f2ea,drop:{wool:[1,3]},size:1.0,biome:['meadow','forest'],passive:true},
   drake:{n:'Cinder Drake',hp:420,atk:26,xp:220,spd:3.4,col:0xb8281c,drop:{scale:[3,5],ember:[2,4],crystal:[1,2]},size:2.6,biome:['volcanic'],boss:true}
 };
 export const DIALOGUE = {
