@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Reborn Beyond - World</title>
+<link rel="stylesheet" href="style.css">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
+</head>
+<body>
+<canvas id="gl"></canvas>
+<div id="hud">
+  <div id="bars">
+    <div class="bar hp"><i id="hpFill"></i><span id="hpTxt"></span></div>
+    <div class="bar nx"><i id="nxFill"></i><span id="nxTxt"></span></div>
+  </div>
+  <div id="where"></div>
+  <div id="toast"></div>
+  <button id="btnBag" class="hb">Bag</button>
+</div>
+<div id="stick"><div id="knob"></div></div>
+<div id="acts">
+  <button id="btnAtk" class="act big">Strike</button>
+  <button id="btnUse" class="act">Use</button>
+  <button id="btnJump" class="act">Jump</button>
+  <div id="skills"></div>
+</div>
+<div id="dialog" class="hidden"><div id="dName"></div><div id="dText"></div><div id="dHint">Tap to continue</div></div>
+<div id="panel" class="hidden"></div>
+<div id="msg" class="hidden"></div>
+<script type="module" src="main.js"></script>
+</body>
+</html>
