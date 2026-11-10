@@ -57,7 +57,10 @@ export const ELEMENTS = {
   light:{name:'Light',col:0xfff2a8,skills:[
     {id:'ray',n:'Radiant Ray',nx:12,dmg:24,r:22,cd:1.3,unlock:1},
     {id:'heal',n:'Dawn Mend',nx:24,dmg:0,r:0,cd:5,unlock:4,heal:60},
-    {id:'nova',n:'Sun Nova',nx:34,dmg:55,r:8,cd:4.5,unlock:6,aoe:true}]}
+    {id:'nova',n:'Sun Nova',nx:34,dmg:55,r:8,cd:4.5,unlock:6,aoe:true}]},
+  water:{name:'Water',col:0x4cc9f0,skills:[{id:'tide',n:'Tide Lash',nx:9,dmg:20,r:18,cd:1,unlock:1},{id:'mend',n:'Spring Mend',nx:22,dmg:0,r:0,cd:5,unlock:4,heal:70},{id:'wave',n:'Tidal Wave',nx:32,dmg:52,r:8,cd:4.2,unlock:6,aoe:true}]},
+  earth:{name:'Earth',col:0xb08a52,skills:[{id:'shard',n:'Stone Shard',nx:10,dmg:24,r:16,cd:1.3,unlock:1},{id:'ward',n:'Granite Ward',nx:18,dmg:0,r:0,cd:6,unlock:4,buff:'veil'},{id:'quake',n:'Quake Burst',nx:30,dmg:58,r:8,cd:4.4,unlock:6,aoe:true}]},
+  wind:{name:'Wind',col:0x8fe3c0,skills:[{id:'gale',n:'Gale Cut',nx:8,dmg:17,r:22,cd:0.8,unlock:1},{id:'cloud',n:'Cloud Veil',nx:18,dmg:0,r:0,cd:6,unlock:4,buff:'veil'},{id:'cyclone',n:'Cyclone',nx:30,dmg:50,r:9,cd:4,unlock:6,aoe:true}]}
 };
 export const BIOMES = {
   meadow:{n:'Verdant Meadow',g:0x5fae4a,tree:'oak',fog:0xbfe3ff},

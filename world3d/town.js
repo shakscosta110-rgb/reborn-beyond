@@ -13,7 +13,7 @@ export const WPS=[
 ];
 export function buildTown(scene,H){
   const colliders=[],roofs=[],chests=[],floors=[],spinners=[],wps=[],beds=[],furn=[];
-  const stone=lam(0x9b9ba8),stone2=lam(0x7b7c8c),wood=lam(0x8a5a2b),dark=lam(0x4a2f17),plaster=lam(0xeadfc6),roofM=lam(0xb4452f),cloth=lam(0xb3283d);
+  const stone=lam(0x9b9ba8),stone2=lam(0x7b7c8c),wood=lam(0x8a5a2b),dark=lam(0x4a2f17),plaster=lam(0xeadfc6),roofM=lam(0x31498f),cloth=lam(0xb3283d);
   const bx=(w,h,d,m,x,y,z,cast=true)=>{const o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m);o.position.set(x,y,z);o.castShadow=cast;o.receiveShadow=true;scene.add(o);return o};
   const cy=(r1,r2,h,m,x,y,z,seg=12)=>{const o=new THREE.Mesh(new THREE.CylinderGeometry(r1,r2,h,seg),m);o.position.set(x,y,z);o.castShadow=true;o.receiveShadow=true;scene.add(o);return o};
   const col=(x,z,w,d)=>colliders.push({minx:x-w/2,maxx:x+w/2,minz:z-d/2,maxz:z+d/2});

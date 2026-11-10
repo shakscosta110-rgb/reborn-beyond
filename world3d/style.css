@@ -86,3 +86,8 @@ body.play #prompt{display:block}
 #setbox input[type=range]{width:55%}#setbox h3{margin:0 0 4px}
 #chapter{position:fixed;inset:0;z-index:35;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;font-family:Georgia,serif;text-align:center;text-shadow:0 2px 14px #000}
 #chapter .c1{letter-spacing:6px;font-size:13px;color:#cfe3ff}#chapter .c2{font-family:'Cinzel',Georgia,serif;font-size:30px;color:#f5d98a;margin-top:6px;letter-spacing:3px}
+
+/* wooden hotbar */
+#hotbar{padding:3px;background:#7b4f27;border:2px solid #4a2f17;border-radius:8px}
+.slot{background:linear-gradient(#f4e6c1,#dcc28c);border:2px solid #6b4423;color:#222}
+.slot i{color:#fff}
